@@ -3,6 +3,8 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import { HttpClientModule } from '@angular/common/http';
+import { Serie } from '../serie';
+import { SeriesService } from '../series.service';
 
 @Component({
   selector: 'app-listar-series',
@@ -13,6 +15,7 @@ import { HttpClientModule } from '@angular/common/http';
 })
 export class ListarSeriesComponent implements OnInit {
   series: any[] = [];
+  averageSeasons: number = 0; 
 
   constructor(private http: HttpClient) { }
 
@@ -22,4 +25,10 @@ export class ListarSeriesComponent implements OnInit {
         this.series = data;
       });
   }
+  calculateAverageSeasons(): void {
+    const totalSeasons = this.series.reduce((acc, serie) => acc + serie.seasons, 0);
+    this.averageSeasons = this.series.length > 0 ? totalSeasons / this.series.length : 0;
+  }
+
+
 }
