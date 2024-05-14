@@ -1,13 +1,15 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
+import { ListarSeriesComponent } from './series/listar-series/listar-series.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @Component({
   selector: 'app-root',
-  standalone: true,
-  imports: [RouterOutlet],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+  styleUrls: ['./app.component.css'],
+  standalone: true,
+  imports: [RouterOutlet, ListarSeriesComponent, HttpClientModule]  // Combina las importaciones aquí
 })
 export class AppComponent {
-  title = 'TallerAngular';
+  title = 'Gestión de Series de Televisión';
 }
