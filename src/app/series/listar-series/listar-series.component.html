@@ -9,7 +9,7 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let serie of series">
+      <tr *ngFor="let serie of series" (click)="selectSerie(serie)">
         <td>{{ serie.id }}</td>
         <td>{{ serie.name }}</td>
         <td>{{ serie.channel }}</td>
@@ -18,3 +18,5 @@
     </tbody>
   </table>
   <h3>Promedio de Temporadas: {{ averageSeasons | number:'1.0-2' }}</h3>
+
+  <app-detalle-series *ngIf="selectedSerie" [serie]="selectedSerie"></app-detalle-series>

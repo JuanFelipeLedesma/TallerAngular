@@ -1,0 +1,10 @@
+<!-- src/app/series/detalle-series/detalle-series.component.html -->
+<div class="card" *ngIf="serie">
+    <img [src]="serie.poster" class="card-img-top" alt="Poster de la serie">
+    <div class="card-body">
+      <h5 class="card-title">{{ serie.name }}</h5>
+      <p class="card-text">{{ serie.description }}</p>
+      <a [href]="serie.webpage" class="btn btn-primary" target="_blank">Ver más</a>
+    </div>
+  </div>
+  

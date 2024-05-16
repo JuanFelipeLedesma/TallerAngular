@@ -5,17 +5,19 @@ import { HttpClient } from '@angular/common/http';
 import { HttpClientModule } from '@angular/common/http';
 import { Serie } from '../serie';
 import { SeriesService } from '../series.service';
+import { DetalleSeriesComponent } from '../detalle-series/detalle-series.component';  // Importa el componente de detalle
 
 @Component({
   selector: 'app-listar-series',
   templateUrl: './listar-series.component.html',
   styleUrls: ['./listar-series.component.css'],
   standalone: true,
-  imports: [CommonModule, HttpClientModule]
+  imports: [CommonModule, HttpClientModule, DetalleSeriesComponent]
 })
 export class ListarSeriesComponent implements OnInit {
   series: any[] = [];
   averageSeasons: number = 0; 
+  selectedSerie?: Serie;
 
   constructor(private http: HttpClient) { }
 
@@ -29,6 +31,9 @@ export class ListarSeriesComponent implements OnInit {
   calculateAverageSeasons(): void {
     const totalSeasons = this.series.reduce((acc, serie) => acc + serie.seasons, 0);
     this.averageSeasons = this.series.length > 0 ? totalSeasons / this.series.length : 0;
+  }
+  selectSerie(serie: Serie): void {
+    this.selectedSerie = serie;  // Actualiza la serie seleccionada
   }
 
 
